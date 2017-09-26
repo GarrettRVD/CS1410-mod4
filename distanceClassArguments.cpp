@@ -46,7 +46,7 @@ public:
 };
 int Distance::count = 0;
 // Prototypes
-
+void ShowCurrentCount(Distance d1);
 
 // Main Program
 int main()
@@ -72,6 +72,8 @@ int main()
     d4 = d4.add_dist_tome(d2);
     cout << "d4 = ";
     d4.showDist();
+
+    ShowCurrentCount(d3);
 
     return 0;
 }
@@ -109,4 +111,9 @@ Distance Distance::add_dist_tome(Distance d1)
     temp.feet += feet + d1.feet;
 
     return temp;
+}
+void ShowCurrentCount(Distance d1)
+{
+    cout << "The current count in my super class is " << d1.getCount() << endl;
+
 }
