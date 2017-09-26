@@ -13,11 +13,13 @@ class Distance
 private:
     int feet;
     float inches;
+    // Every object shares this variable
+    static int count;   // one variable per CLASS
 public:
     Distance(): feet(0), inches(0)  // Constructor with no arguments
-    {/*Empty body*/}
+    {count++;}
     Distance(int ft, float in): feet(ft), inches(in)    // Constructor with two arguments
-    {/*Empty body*/}
+    {count++;}
 
     void setDist(int f, float i)
     {
@@ -37,8 +39,12 @@ public:
     }
     void add_dist(Distance d1, Distance d2);
     Distance add_dist_tome(Distance d1);
+    int getCount()
+    {
+        return count;
+    }
 };
-
+int Distance::count = 0;
 // Prototypes
 
 
@@ -47,8 +53,11 @@ int main()
 {
     // Create an instance "instantiate" the class
     Distance d1, d4;
+    cout << "Count is " << d1.getCount() << endl;
     Distance d2(8, 2);
+    cout << "Count is " << d2.getCount() << endl;
     Distance d3(2, 4);
+    cout << "Count is " << d3.getCount() << endl;
     // Use methods to set/access data
     //d1.setDist(5, 9.0);
     //d2.getDist();
